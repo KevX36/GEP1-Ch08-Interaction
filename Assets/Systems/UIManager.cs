@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text messageText;
@@ -13,12 +14,17 @@ public class UIManager : MonoBehaviour
 
 
         currentMessage = messageText.ToString();
-
+        //StartCoroutine(messageTimer());
 
 
 
     }
 
-
+    IEnumerable messageTimer()
+    {
+        Debug.Log("timer started");
+        yield return new WaitForSecondsRealtime(30);
+        messageText.SetText("");
+    }
 
 }
