@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PickupInteractable : MonoBehaviour,IInteractable
 {
-
+    public string message;
 
 
 
