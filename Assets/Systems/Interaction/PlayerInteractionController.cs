@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 
@@ -36,6 +37,20 @@ public class PlayerInteractionController : MonoBehaviour
         }
     }
 
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            
+            if(targetInteractable != null)
+            {
+                Debug.Log("Interacted");
+                targetInteractable.Interact();
+            }
+            
+        }
+        
+    }
 
 
 
