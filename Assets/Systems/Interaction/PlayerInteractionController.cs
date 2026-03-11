@@ -13,7 +13,7 @@ public class PlayerInteractionController : MonoBehaviour
     [SerializeField] private GameObject InteractableObject;
 
     public int Gems = 0;
-
+    public GameObject InteractText;
 
 
 
@@ -24,6 +24,7 @@ public class PlayerInteractionController : MonoBehaviour
     {
         if(other.TryGetComponent(out IInteractable foundInteractable))
         {
+            InteractText.SetActive(true);
             targetInteractable = foundInteractable;
             InteractableObject = other.gameObject;
         }
@@ -32,6 +33,7 @@ public class PlayerInteractionController : MonoBehaviour
     {
         if (other.TryGetComponent(out IInteractable foundInteractable))
         {
+            InteractText.SetActive(false);
             targetInteractable = null;
             InteractableObject = null;
         }
@@ -44,6 +46,7 @@ public class PlayerInteractionController : MonoBehaviour
             
             if(targetInteractable != null)
             {
+                InteractText.SetActive(false);
                 Debug.Log("Interacted");
                 targetInteractable.Interact();
             }
