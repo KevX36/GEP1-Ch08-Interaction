@@ -4,26 +4,45 @@ using System.Collections;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text messageText;
+    private Coroutine messageCoroutine;
 
-    private string currentMessage = "";
+    private void Start()
+    {
+        
+    }
     public void DisplayMessage(string message)
     {
 
+        if(messageCoroutine != null)
+        {
+            StopCoroutine(messageCoroutine);
+        }
+        
 
-        messageText.SetText(message);
-
-
-        currentMessage = messageText.ToString();
-        //StartCoroutine(messageTimer());
+        messageCoroutine = StartCoroutine(messageDisplayAndFade(message));
 
 
 
     }
 
-    IEnumerable messageTimer()
+    IEnumerator messageDisplayAndFade(string message)
     {
+        messageText.SetText(message);
+        float messageDuration = 5f;
+        messageText.alpha = 1;
+        float fadeoutTime = 1.5f;
+        float timeElapsed = 0f;
+        Color OGColor = messageText.color;
+
+        while (timeElapsed < messageDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timeElapsed / fadeoutTime);
+            messageText.alpha = alpha;
+
+            yield return null;
+        }
         Debug.Log("timer started");
-        yield return new WaitForSecondsRealtime(30);
         messageText.SetText("");
     }
 

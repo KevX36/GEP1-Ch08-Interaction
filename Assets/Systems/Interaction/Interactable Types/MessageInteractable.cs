@@ -4,9 +4,9 @@ public class MessageInteractable : MonoBehaviour,IInteractable
 {
     [SerializeField] private UIManager uiManager;
     public string message;
-    private void start()
+    private void Start()
     {
-        uiManager = ServiceHub.Instance.GetComponent<UIManager>();
+        uiManager = ServiceHub.Instance.UIManager;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public void Interact()

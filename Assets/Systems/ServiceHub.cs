@@ -18,11 +18,13 @@ public class ServiceHub : MonoBehaviour
     [Header("System References")]
 
     [SerializeField] private UIManager uiManager;
+    [SerializeField] private GameObject player;
 
 
     // public accessors for each system to allow other scripts to easily access them
 
     public UIManager UIManager => uiManager;
+    public GameObject Player => player;
 
     private void Awake()
     {

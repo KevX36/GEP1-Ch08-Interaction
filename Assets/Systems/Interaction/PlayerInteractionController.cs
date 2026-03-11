@@ -12,7 +12,7 @@ public class PlayerInteractionController : MonoBehaviour
 
     [SerializeField] private GameObject InteractableObject;
 
-
+    public int Gems = 0;
 
 
 
